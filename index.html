@@ -41,6 +41,13 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
+				<label for="new">Add a person</label>
+				<input name="new" type='text' ng-model='newPerson' />
+				<button class="btn btn-default" ng-click='addNew()'>Add</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
 				<h4>random shit</h4>
 				{{understand}}
 				<input type='text' ng-model='inputValue' />
