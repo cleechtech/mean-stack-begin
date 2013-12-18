@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+	<title>Begin Angular.js</title>
+	<link href="bootstrap.css" rel="stylesheet" type="text/css">
+	<script src="jquery-1.10.2.js"></script>
+	<script src="angular.js"></script>
+	<script src="bootstrap.js"></script>
+	<script src="app.js"></script>
+	<script src="maincontroller.js"></script>
+</head>
+<body>
+	<div id='content' ng-app='begin-angular' ng-controller='MainController'>
+		{{understand}}
+		<input type='text' ng-model='inputValue' />
+		{{inputValue}}
+		
+		<!-- select tags populated differently for demonstrative purposes -->
+		<select ng-model='selectedPerson' ng-options='obj.name for obj in people'></select>
+		<select ng-model='selectedGenre'>
+			<!-- people[selectedPerson.id].music is only working as the people ID#s are the same as the array indexes -->
+			<option ng-repeat='label in people[selectedPerson.id].music'>{{label}}</option>
+		</select>
+		
+		<div class="row">
+			<div class="col-lg-12">
+			<h3>Search</h3>
+			<input type='text' ng-model='searchText' />
+			<h4>live</h4>
+			<ul>
+				<li ng-repeat='person in people | filter:searchText' ng-show='person.live == true'>#{{person.id}} {{person.name}}</li>
+			</ul>
+			<h4>not live</h4>
+			<ul>
+				<li ng-repeat='person in people | filter:searchText' ng-hide='person.live == true'>#{{person.id}} {{person.name}}</li>
+			</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
