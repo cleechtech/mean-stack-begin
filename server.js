@@ -1,42 +1,31 @@
-
-/**
- * Module dependencies.
- */
-
+// dependencies ============================
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
 var mongoose = require('mongoose');
-var database = require('./config/config');
+var database = require('./server/db_config');
+var port  	 = process.env.PORT || 3000;
 
+// create app ============================
 var app = express();
 
-// configure database
+// connect to database ============================
 mongoose.connect(database.development.db)
 
-// all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+// configure ============================
+app.configure(function() {
+		app.use(express.static(__dirname + '/client')); 		// set the static files location /client/img will be /img for users
+		app.use(express.logger('dev')); 						// log every request to the console
+		app.use(express.bodyParser()); 							// pull information from html in POST
+		app.use(express.methodOverride()); 						// simulate DELETE and PUT
+});
 
-// development only
+// development only ============================
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-// load routes
-require('./app/routes')(app);
+// load routes ============================
+require('./server/routes/routes')(app);
 
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+// start server ============================
+app.listen(port);
+console.log("App listening on port " + port);

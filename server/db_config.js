@@ -12,8 +12,8 @@ var rootPath = path.resolve(__dirname + '../..')
 module.exports = {
   development: {
     root: rootPath,
-    //db: 'mongodb://localhost/your_app_db_dev',
-    db: 'mongodb://ame:ame@mongo.onmodulus.net:27017/qurawu3R'
+    db: 'mongodb://localhost/mean_begin',
+    //db: 'mongodb://ame:ame@mongo.onmodulus.net:27017/qurawu3R'
   },
   test: {
     root: rootPath,
