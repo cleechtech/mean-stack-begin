@@ -1,1 +1,1 @@
-angular.module('dairyDesk', ['transportersController', 'transporterService']);
+angular.module('dairyDesk', ['transporterController', 'transporterService']);
