@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var database = require('./server/db_config');
 var port  	 = process.env.PORT || 3000;
 
+// validation: https://github.com/chriso/node-validator
+
 // create app ============================
 var app = express();
 
