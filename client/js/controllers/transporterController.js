@@ -1,5 +1,8 @@
 angular.module('transporterController', [])
-    .controller('mainController', function($scope, $http){
+    .controller('transporterController', function($scope, $http, $routeParams){
+		
+		$scope.params = $routeParams;
+		
         $scope.formData = {};
         
         $http.get('/api/transporters')

@@ -10,7 +10,13 @@
 <body>
 
 <!-- SET THE CONTROLLER -->
-<body ng-controller="mainController">
+<body>
+	
+	<div ng-controller="transporterController">
+	<a href='#transporters'>Transporters</a>
+	<div ng-view></div>
+	
+	
 	<div class="container">
 
 		<div>
@@ -49,18 +55,22 @@
                     </td>
 		        </form>
 		    </tr>
-		</table>		
-
+		</table>
+</div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   -->
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/angular.js"></script>
-  <script src="js/libs/angular-ui-router.js"></script>
+  <script src="js/libs/angular-route.js"></script>
+  <script src='js/libs/angular-ui-router.js'></script>
   <script src="js/libs/bootstrap.js"></script>
   
-  <script src="js/controllers/transporterController.js"></script>
   <script src="js/services/transporterService.js"></script>
+  <script src='js/services/deliveryService.js'></script>
+  <script src="js/controllers/transporterController.js"></script>
+  <script src='js/controllers/deliveryController.js'></script>
+  
   <script src="js/app.js"></script>
 
 </body>

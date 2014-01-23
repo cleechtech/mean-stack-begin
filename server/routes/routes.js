@@ -4,6 +4,7 @@ var Delivery = require('../models/delivery');
 module.exports = function(app){
 
     // ====== API =========
+    // TRANSPORTERS
     // all transporters
     app.get('/api/transporters', function(req, res){
         Transporter.find(function(err, transporters){
@@ -45,12 +46,45 @@ module.exports = function(app){
         });
     });
     
+    // DELIVERIES
     // all deliveries
     app.get('/api/deliveries', function(req, res){
         Delivery.find(function(err, deliveries){
             if(err) res.send(err);
             
             res.json(deliveries);
+        });
+    });
+    
+    // create delivery
+    app.post('/api/deliveries', function(req, res){
+        Delivery.create({
+            //~ name: req.body.name,
+            //~ natl_id_num: req.body.natl_id_num,
+            //~ phone: req.body.phone
+        }, function(err, delivery){
+            if(err) res.send(err);
+            
+            Delivery.find(function(err, deliveries){
+                if(err) res.send(err);
+            
+                res.json(deliveries);
+            });
+        });
+    });
+    
+    // delete delivery
+    app.delete('/api/deliveries/:delivery_id', function(req, res){
+        Delivery.remove({
+            _id: req.params.delivery_id
+        }, function(err, delivery){
+            if (err) res.send(err);
+            
+            Delivery.find(function(err, deliveries){
+                if(err) res.send(err);
+                
+                res.json(deliveries);
+           }); 
         });
     });
     
