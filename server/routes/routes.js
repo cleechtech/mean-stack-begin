@@ -1,4 +1,5 @@
 var Transporter = require('../models/transporter');
+var Delivery = require('../models/delivery');
 
 module.exports = function(app){
 
@@ -41,6 +42,15 @@ module.exports = function(app){
                 
                 res.json(transporters);
            }); 
+        });
+    });
+    
+    // all deliveries
+    app.get('/api/deliveries', function(req, res){
+        Delivery.find(function(err, deliveries){
+            if(err) res.send(err);
+            
+            res.json(deliveries);
         });
     });
     
