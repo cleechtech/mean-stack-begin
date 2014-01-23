@@ -2,12 +2,12 @@ angular.module('transporterController', [])
     .controller('mainController', function($scope, $http){
         $scope.formData = {};
         
-        $http.get('/api/todos')
+        $http.get('/api/transporters')
             .success(function(data){
                 $scope.transporters = data;
             })
             .error(function(err){
-                console.log('couldn\'t get /api/todos cuz: ' + err);
+                console.log('couldn\'t get /api/transporters cuz: ' + err);
             });
             
         $scope.createTransporter = function(){

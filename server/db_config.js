@@ -16,7 +16,7 @@ module.exports = {
   },
   test: {
     root: rootPath,
-    db: 'mongodb://localhost/your_app_db_test'
+    db: 'mongodb://localhost/mean_begin_test'
   },
   staging: {
     root: rootPath,

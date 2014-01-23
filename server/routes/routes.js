@@ -52,17 +52,6 @@ module.exports = function(app){
     
     
     
-//     Get all transporters JSON
-//
-// Transporter.find(function(err, transporters){
-//     if(err) res.send(err);
-//             
-//     res.json(transporters);
-// });
-    
-    
-    
-    
     
     
     

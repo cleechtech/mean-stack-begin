@@ -24,7 +24,7 @@
 		        <th>Phone</th>
 		        <th></th>
 		    </tr>
-		    <tr ng-repeat="t in transporters">
+		    <tr ng-repeat="t in transporters track by $index">
 		        <td>{{t.name}}</td>
 		        <td>{{t.natl_id_num}}</td>
 		        <td>{{t.phone}}</td>
