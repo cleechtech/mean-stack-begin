@@ -12,6 +12,11 @@
 <!-- SET THE CONTROLLER -->
 <body>
 	
+	<div ng-controller='mainController'>{{ message }}
+		<a href='#main'>Link to main</a>
+		<div ng-view></div>
+	</div>
+	
 	<div ng-controller="transporterController">
 	<a href='#transporters'>Transporters</a>
 	<div ng-view></div>
@@ -68,6 +73,7 @@
   
   <script src="js/services/transporterService.js"></script>
   <script src='js/services/deliveryService.js'></script>
+  <script src="js/controllers/mainController.js"></script>
   <script src="js/controllers/transporterController.js"></script>
   <script src='js/controllers/deliveryController.js'></script>
   
