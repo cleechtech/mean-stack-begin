@@ -2,9 +2,13 @@ var Transporter = require('../models/transporter');
 var Delivery = require('../models/delivery');
 
 module.exports = function(app){
-
+	
+	// ====================
     // ====== API =========
+    // ====================
+    
     // TRANSPORTERS
+    //==================================
     // all transporters
     app.get('/api/transporters', function(req, res){
         Transporter.find(function(err, transporters){
@@ -45,7 +49,7 @@ module.exports = function(app){
            }); 
         });
     });
-    
+    // =================================================
     // DELIVERIES
     // all deliveries
     app.get('/api/deliveries', function(req, res){
@@ -88,9 +92,12 @@ module.exports = function(app){
         });
     });
     
-    // ===== application ======
+    // ============================
+    // ==== Application routes ====
+    // ============================
+    
     app.get('/*', function(req, res) {
-	    res.sendfile('./client/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+	    res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 	});
 };
     

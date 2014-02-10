@@ -1,4 +1,4 @@
-angular-begin
+mean-stack-begin
 ============
 
-something something something
+mongo, express, angular, nodejs
