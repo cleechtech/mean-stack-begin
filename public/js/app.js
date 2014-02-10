@@ -5,8 +5,6 @@ window.app = angular.module('mean-stack-begin', [
 	'ngRoute',
 	'ngResource',
 	'ngCookies',
-	'ui.bootstrap',
-	'ui.router',
 	'mainController',
 	'transporterController', 
 	'transporterService', 
