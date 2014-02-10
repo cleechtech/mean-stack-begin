@@ -1,6 +1,6 @@
 // transporters service is meant to interact with the node API
 angular.module('transporterService', [])
-    .factory('Transporter', function($http){
+    .factory('Transporter', ['$http', function($http){
         // all return promise objects
         return {
             get: function(){
@@ -12,5 +12,5 @@ angular.module('transporterService', [])
             delete: function(id){
                 return $http.delete('/api/transporters/'+id);
             }
-        }
-    });
+        };
+    }]);

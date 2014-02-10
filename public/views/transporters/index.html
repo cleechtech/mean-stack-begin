@@ -1,0 +1,38 @@
+<div>
+			<span class="label label-info">{{ transporters.length }}</span> Transporters
+		</div>
+		
+		<table class='table'>
+		    <tr>
+		        <th>Name</th>
+		        <th>National ID #</th>
+		        <th>Phone</th>
+		        <th></th>
+		    </tr>
+		    <tr ng-repeat="t in transporters track by $index">
+		        <td>{{t.name}}</td>
+		        <td>{{t.natl_id_num}}</td>
+		        <td>{{t.phone}}</td>
+		        <td>
+		            <button class='btn btn-default' ng-click='editTransporter(t._id)'>Edit</button>
+		            <button class='btn btn-default' ng-click='deleteTransporter(t._id)'>Delete</button>
+		        </td>
+		    </tr>
+		    <tr>
+		        <form>
+		            <td>
+				        <input type="text" placeholder="Enter a new transporter" ng-model="formData.name">
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Enter a new transporter" ng-model="formData.natl_id_num">
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Enter a new transporter" ng-model="formData.phone">
+                    </td>
+                    <td>
+    		            <button type="submit" class="btn btn-default" ng-click="createTransporter()">Add</button>
+                    </td>
+		        </form>
+		    </tr>
+		</table>
+</div>
