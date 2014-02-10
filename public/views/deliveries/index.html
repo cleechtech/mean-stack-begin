@@ -1,1 +1,17 @@
-<h2>No deliveries yet..</h2>
+<table class='table'>
+	<tr>
+		<th>Name</th>
+		<th>Total # of Deliveries</th>
+		<th>Amount delivered</th>
+	</tr>
+	<tr ng-repeat="t in transporters track by $index">
+		<td>{{t.name}}</td>
+		<td>{{t.deliveries.length}}</td>
+		<td>
+			<input type="text" placeholder="amount" ng-model="t.deliveries">
+		</td>
+		<td>
+			<button type="submit" class="btn btn-default" ng-click="createDelivery()">Add Delivery</button>
+		</td>
+	</tr>
+</table>

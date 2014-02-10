@@ -6,7 +6,7 @@ window.app.config(['$routeProvider', '$locationProvider', function($routeProvide
 		})
 		.when('/deliveries', {
 			templateUrl: 'views/deliveries/index.html',
-			controller: 'deliveriesController'
+			controller: 'deliveryController'
 		})
 		.when('/', {
 			templateUrl: 'views/partials/main.html',

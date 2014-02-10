@@ -16,6 +16,7 @@ app.configure(function() {
 		app.use(express.logger('dev')); 						// log every request to the console
 		app.use(express.bodyParser()); 							// pull information from html in POST
 		app.use(express.methodOverride()); 						// simulate DELETE and PUT
+		app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
 });
 
 // development only ============================
