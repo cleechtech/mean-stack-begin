@@ -13,6 +13,15 @@ exports.transporter = function(req, res, next, id){
 	});
 };
 
+// show all transporters
+exports.all = function(req, res){
+	Transporter.find(function(err, transporters){
+		if(err) res.send(err);
+		res.json(transporters);
+	});
+};
+
+// show individual transporter
 exports.show = function(req, res){
 	res.jsonp(req.transporter);
 };
@@ -37,7 +46,7 @@ exports.destroy = function(req, res){
 // create transporter
 exports.create = function(req, res){
 	var transporter = new Transporter(req.body);
-	transporter.deliveries = req.deliveries;
+	transporter.deliveries = req.body.deliveries;
 	// save new transporter
 	transporter.save(function(err, transporter, numAffected){
 		// return json of all Transporters
@@ -46,3 +55,12 @@ exports.create = function(req, res){
 		});
 	});
 };
+
+//~ exports.update = function(req, res){
+  //~ var article = req.article
+  //~ article = _.extend(article, req.body)
+//~ 
+  //~ article.save(function(err) {
+  	//~ res.jsonp(article)
+  //~ })
+//~ }

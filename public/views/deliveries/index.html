@@ -8,10 +8,10 @@
 		<td>{{t.name}}</td>
 		<td>{{t.deliveries.length}}</td>
 		<td>
-			<input type="text" placeholder="amount" class='form-control' ng-model="deliveryAmount">
+			<input type="text" placeholder="amount" class='form-control' ng-model="delivery.amount">
 		</td>
 		<td>
-			<button type="submit" class="btn btn-default" ng-click="addDelivery(deliveryAmount, t._id)">Add</button>
+			<button type="submit" class="btn btn-default" ng-click="addDelivery(t._id)">Add</button>
 		</td>
 	</tr>
 	<tr>

@@ -13,8 +13,25 @@ var deliverySchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'Transporter'
 	},
-    amount: { type: Number, required: true }
+    amount: { 
+		type: Number, 
+		required: true,
+		min: 1,
+		max: 100,
+		validate: function(){
+			// validate amount
+		}
+	}
 })
+
+/*
+// middleware: text Transporter when a delivery is added
+// http://mongoosejs.com/docs/2.8.x/docs/middleware.html
+deliverySchema.pre('save', function (next) {
+  text(this.transporter.phone, 'We received your delivery!');
+  next();
+});
+*/
 
 var Delivery = mongoose.model('Delivery', deliverySchema);
 

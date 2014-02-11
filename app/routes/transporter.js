@@ -6,13 +6,7 @@ var transportersCtrl = require('../controllers/transporters');
 module.exports = function(app){
 
     // all transporters
-    app.get('/api/transporters', function(req, res){
-        Transporter.find(function(err, transporters){
-            if(err) res.send(err);
-            
-            res.json(transporters);
-        });
-    });
+    app.get('/api/transporters', transportersCtrl.all);
     
     // create transporter
     app.post('/api/transporters', transportersCtrl.create);

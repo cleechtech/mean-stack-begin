@@ -1,7 +1,7 @@
 angular.module('deliveryController', [])
 	.controller('deliveryController', function($scope, $http){
 		
-		$scope.todaysDeliveries = [];
+		$scope.delivery = {};
 		
 		// get all deliveries
 		$http.get('/api/deliveries')
@@ -13,21 +13,29 @@ angular.module('deliveryController', [])
 				console.log('couldn\'t get /api/deliveries cuz: ' + err);
 			});
 		
+		// $watch for changes to deliveries list
+		// callback fires even when deliveries is undefined	
+		$scope.$watch('deliveries', function(newDeliv){
+			if(newDeliv){
+				var deliveries = [];
+				
+				angular.forEach($scope.deliveries, function(deliv, index){
+					console.log('index: ' + index + ' amount: ' + deliv);
+					deliveries.push(deliv.amount);	// currently deliv.amount is undefined
+				});
+				
+				// draw something with d3 using 'deliveries' array..
+				// http://www.ng-newsletter.com/posts/directives.html
+				
+			}
+		});
+		
 		// add delivery
-		$scope.addDelivery = function(deliveryAmount, transporterId){
-			// create delivery object
-			var data = {};
-			data.date = Date.now();
-			data.amount = deliveryAmount;
-			data.transporter = transporterId;
+		$scope.addDelivery = function(transporterId){
+			$scope.delivery.transporter = transporterId;
 			
-			$http({
-				url: '/api/deliveries', 
-				data: data,
-				method: 'POST',
-				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-			})
-				.success(function(data, status, headers, config){
+			$http.post('/api/deliveries', $scope.delivery)
+				.success(function(data){
 					$('input').val('');
 					console.log(data + ' added');
 				})

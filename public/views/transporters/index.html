@@ -1,5 +1,6 @@
 <div>
-	<span class="label label-info">{{ transporters.length }}</span> Transporters
+	 
+	<h2><span class="label label-info">{{ transporters.length }}</span> Transporters</h2>
 </div>
 		
 		<table class='table'>
@@ -11,10 +12,12 @@
 		        <th></th>
 		    </tr>
 		    <tr ng-repeat="t in transporters track by $index">
-		        <td>{{t.name}}</td>
+		        <td>
+					<a href='/transporters/:id'>{{t.name}}</a>
+				</td>
 		        <td>{{t.natl_id_num}}</td>
 		        <td>{{t.phone}}</td>
-		        <td>{{t.deliveries.length}}</td>
+		        <td>{{t.deliveries}}</td>
 		        <td>
 		            <button class='btn btn-default' ng-click='editTransporter(t._id)'>Edit</button>
 		            <button class='btn btn-default' ng-click='deleteTransporter(t._id)'>Delete</button>
