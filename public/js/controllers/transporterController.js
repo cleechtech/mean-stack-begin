@@ -21,7 +21,7 @@ angular.module('transporterController', [])
                     $('input').val('');
                     $scope.transporters = data;
                 })
-                .error(function(data){
+                .error(function(data, err){
                     console.log('couldn\'t post transporter: ' + err);
                 });
         };

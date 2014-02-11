@@ -3,7 +3,7 @@ angular.module('deliveryController', [])
 		
 		$scope.todaysDeliveries = [];
 		
-		
+		// get all deliveries
 		$http.get('/api/deliveries')
 			.success(function(data){
 				// add all deliveries to deliveries scope
@@ -13,6 +13,7 @@ angular.module('deliveryController', [])
 				console.log('couldn\'t get /api/deliveries cuz: ' + err);
 			});
 		
+		// add delivery
 		$scope.addDelivery = function(deliveryAmount, transporterId){
 			// create delivery object
 			var data = {};
@@ -30,7 +31,7 @@ angular.module('deliveryController', [])
 					$('input').val('');
 					console.log(data + ' added');
 				})
-				.error(function(data){
+				.error(function(data, err){
 					console.log('couldn\'t post delivery: ' + err);
 				});
 		};

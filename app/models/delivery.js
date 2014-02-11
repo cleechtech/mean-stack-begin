@@ -1,16 +1,19 @@
+// Delivery model
 var mongoose = require('mongoose');
 	Schema = mongoose.Schema,
-	ObjectId = Schema.ObjectId;
-
-var Transporter = require('./transporter.js');
+	ObjectId = Schema.ObjectId,
+	Transporter = require('./transporter.js');
 
 var deliverySchema = new Schema({
-    date: { type: Date, default: Date.now },
+    date: { 
+		type: Date, 
+		default: Date.now 
+	},
     transporter: {
-		type: ObjectId,
+		type: Schema.ObjectId,
 		ref: 'Transporter'
 	},
-    amount: Number
+    amount: { type: Number, required: true }
 })
 
 var Delivery = mongoose.model('Delivery', deliverySchema);

@@ -12,11 +12,11 @@ mongoose.connect(database.development.db)
 
 // configure ============================
 app.configure(function() {
-		app.use(express.static(__dirname + '/public')); 		// set the static files location /client/img will be /img for users
-		app.use(express.logger('dev')); 						// log every request to the console
-		app.use(express.bodyParser()); 							// pull information from html in POST
-		app.use(express.methodOverride()); 						// simulate DELETE and PUT
-		app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
+	app.use(express.static(__dirname + '/public')); 		// set the static files location /client/img will be /img for users
+	app.use(express.logger('dev')); 						// log every request to the console
+	app.use(express.bodyParser()); 							// pull information from html in POST
+	app.use(express.methodOverride()); 						// simulate DELETE and PUT
+	app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
 });
 
 // development only ============================
@@ -24,8 +24,17 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+// Bootstrap models
+//~ fs = require('fs');
+//~ var models_path = __dirname + '/app/models'
+//~ fs.readdirSync(models_path).forEach(function (file) {
+  //~ require(models_path+'/'+file)
+//~ });
+
 // load routes ============================
-require('./app/routes/routes')(app);
+require('./app/routes/transporter')(app);
+require('./app/routes/delivery')(app);
+require('./app/routes/routes')(app);	// keep this last
 
 // start server ============================
 app.listen(port);
