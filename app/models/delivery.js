@@ -1,9 +1,15 @@
 var mongoose = require('mongoose');
+	Schema = mongoose.Schema,
+	ObjectId = Schema.ObjectId;
+
 var Transporter = require('./transporter.js');
 
-var deliverySchema = new mongoose.Schema({
+var deliverySchema = new Schema({
     date: { type: Date, default: Date.now },
-    transporter: [Transporter],
+    transporter: {
+		type: ObjectId,
+		ref: 'Transporter'
+	},
     amount: Number
 })
 

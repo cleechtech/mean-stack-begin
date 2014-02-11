@@ -8,10 +8,21 @@
 		<td>{{t.name}}</td>
 		<td>{{t.deliveries.length}}</td>
 		<td>
-			<input type="text" placeholder="amount" ng-model="t.deliveries">
+			<input type="text" placeholder="amount" class='form-control' ng-model="deliveryAmount">
 		</td>
 		<td>
-			<button type="submit" class="btn btn-default" ng-click="createDelivery()">Add Delivery</button>
+			<button type="submit" class="btn btn-default" ng-click="addDelivery(deliveryAmount, t._id)">Add</button>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>
+			<!--<button type="submit" class="btn btn-default" ng-click="addDeliveries()">Add Deliveries</button>-->
 		</td>
 	</tr>
 </table>
+
+<h2>All <span class="label label-info">{{ deliveries.length }}</span> deliveries</h2>
+
+<p ng-repeat='d in deliveries'>{{ d }}</p>

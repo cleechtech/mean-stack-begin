@@ -63,9 +63,9 @@ module.exports = function(app){
     // create delivery
     app.post('/api/deliveries', function(req, res){
         Delivery.create({
-            //~ name: req.body.name,
-            //~ natl_id_num: req.body.natl_id_num,
-            //~ phone: req.body.phone
+            date: req.body.date,
+            transporter: req.body.transporter,
+            amount: req.body.amount
         }, function(err, delivery){
             if(err) res.send(err);
             

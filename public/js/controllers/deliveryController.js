@@ -1,16 +1,41 @@
 angular.module('deliveryController', [])
 	.controller('deliveryController', function($scope, $http){
-		$scope.formData = {};
 		
-		// get all deliveries to deliveries scope
+		$scope.todaysDeliveries = [];
+		
+		
 		$http.get('/api/deliveries')
-            .success(function(data){
-                $scope.deliveries = data;
-            })
-            .error(function(err){
-                console.log('couldn\'t get /api/deliveries cuz: ' + err);
-            });
-            
+			.success(function(data){
+				// add all deliveries to deliveries scope
+				$scope.deliveries = data;
+			})
+			.error(function(err){
+				console.log('couldn\'t get /api/deliveries cuz: ' + err);
+			});
+		
+		$scope.addDelivery = function(deliveryAmount, transporterId){
+			// create delivery object
+			var data = {};
+			data.date = Date.now();
+			data.amount = deliveryAmount;
+			data.transporter = transporterId;
+			
+			$http({
+				url: '/api/deliveries', 
+				data: data,
+				method: 'POST',
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			})
+				.success(function(data, status, headers, config){
+					$('input').val('');
+					console.log(data + ' added');
+				})
+				.error(function(data){
+					console.log('couldn\'t post delivery: ' + err);
+				});
+		};
+
+        
         // add all transporters to transporters scope
         $http.get('/api/transporters')
             .success(function(data){
@@ -20,17 +45,6 @@ angular.module('deliveryController', [])
                 console.log('couldn\'t get /api/transporters cuz: ' + err);
             });
         
-        // create delivery..
-        $scope.createDelivery = function(){
-            $http.post('/api/deliveries', $scope.formData)
-                .success(function(data){
-                    $('input').val('');
-                    $scope.deliveries = data;
-                })
-                .error(function(data){
-                    console.log('couldn\'t post delivery: ' + err);
-                });
-        };
         
         // delete delivery..
         $scope.deleteDelivery = function(id){
