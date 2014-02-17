@@ -10,7 +10,7 @@ var deliverySchema = new Schema({
 		default: Date.now 
 	},
     transporter: {
-		type: Schema.ObjectId,
+		type: String,
 		ref: 'Transporter'
 	},
     amount: { 

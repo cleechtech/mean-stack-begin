@@ -12,10 +12,19 @@ exports.all = function(req, res){
     	
 exports.create = function(req, res){
 	var delivery = new Delivery(req.body);
-	console.log('req.body is: ' + delivery);
 	
+	// save delivery
 	delivery.save(function(err, delivery){
 		if(err) res.send('Couldn\'t save delivery: ' + err);
+		
+		// add delivery to transporter
+		Transporter.findByIdAndUpdate(
+			req.body.transporter, 
+			{$push: {deliveries: delivery}},
+			function(err, transporter){
+				console.log('model is: ' + transporter);
+			});
+		
 		// return all deliveries
 		Delivery.find(function(err, deliveries){
 			if(err) res.send(err);

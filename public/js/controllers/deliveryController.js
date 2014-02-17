@@ -20,7 +20,6 @@ angular.module('deliveryController', [])
 				var deliveries = [];
 				
 				angular.forEach($scope.deliveries, function(deliv, index){
-					console.log('index: ' + index + ' amount: ' + deliv);
 					deliveries.push(deliv.amount);	// currently deliv.amount is undefined
 				});
 				
@@ -30,14 +29,14 @@ angular.module('deliveryController', [])
 			}
 		});
 		
-		// add delivery
+		// create delivery
 		$scope.addDelivery = function(transporterId){
 			$scope.delivery.transporter = transporterId;
 			
 			$http.post('/api/deliveries', $scope.delivery)
 				.success(function(data){
 					$('input').val('');
-					console.log(data + ' added');
+					console.log($scope.delivery.amount.toString() + ' post to api/deliveries');
 				})
 				.error(function(data, err){
 					console.log('couldn\'t post delivery: ' + err);
@@ -59,6 +58,7 @@ angular.module('deliveryController', [])
         $scope.deleteDelivery = function(id){
             $http.delete('/api/deliveries/' + id)
                 .success(function(data){
+					// add json from server to deliveries scope
                     $scope.deliveries = data;
                 })
                 .error(function(err){

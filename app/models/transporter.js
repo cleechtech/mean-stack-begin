@@ -20,10 +20,8 @@ var transporterSchema = new Schema({
 		trim: true,
 		default: '' 
 	},
-	// tell mongoose deliveries field is full of _id that match
-	// a document in the Delivery collection
     deliveries: [{ 
-		type: Schema.ObjectId, 
+		type: Schema.Types.ObjectId, 
 		ref: 'Delivery' 
 	}],
     modified: { 

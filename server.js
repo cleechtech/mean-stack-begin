@@ -24,13 +24,6 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-// Bootstrap models
-//~ fs = require('fs');
-//~ var models_path = __dirname + '/app/models'
-//~ fs.readdirSync(models_path).forEach(function (file) {
-  //~ require(models_path+'/'+file)
-//~ });
-
 // load routes ============================
 require('./app/routes/transporter')(app);
 require('./app/routes/delivery')(app);
