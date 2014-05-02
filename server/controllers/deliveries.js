@@ -17,10 +17,17 @@ exports.create = function(req, res){
 	delivery.save(function(err, delivery){
 		if(err) res.send('Couldn\'t save delivery: ' + err);
 		
+		var transporterId = req.body.transporter;
+		
 		// add delivery to transporter
 		Transporter.findByIdAndUpdate(
-			req.body.transporter, 
-			{$push: {deliveries: delivery}},
+			transporterId, 
+			{
+				$push: {
+					deliveries: delivery
+				}
+			}, 
+			{safe: true, upsert: true},
 			function(err, transporter){
 				console.log('model is: ' + transporter);
 			});

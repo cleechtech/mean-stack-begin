@@ -20,10 +20,7 @@ var transporterSchema = new Schema({
 		trim: true,
 		default: '' 
 	},
-    deliveries: [{ 
-		type: Schema.Types.ObjectId, 
-		ref: 'Delivery' 
-	}],
+    deliveries: [Delivery],
     modified: { 
 		type: Date, 
 		default: Date.now 

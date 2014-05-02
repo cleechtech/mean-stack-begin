@@ -1,33 +1,40 @@
 // dependencies ============================
-var express = require('express');
-var mongoose = require('mongoose');
-var database = require('./config/db_config');
+var express = require('express'),
+	bodyParser = require('body-parser'),
+	methodOverride = require('method-override'),
+	morgan = require('morgan'),
+	mongoose = require('mongoose');
+
+var database = require('./server/config/db_config');
+var env = process.env.NODE_ENV || 'development'
 var port = process.env.PORT || 3000;
 
-// create app ============================
 var app = express();
 
 // connect to database ============================
 mongoose.connect(database.development.db)
 
 // configure ============================
-app.configure(function() {
-	app.use(express.static(__dirname + '/public')); 		// set the static files location /client/img will be /img for users
-	app.use(express.logger('dev')); 						// log every request to the console
-	app.use(express.bodyParser()); 							// pull information from html in POST
-	app.use(express.methodOverride()); 						// simulate DELETE and PUT
-	app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
-});
+app.use(express.static(__dirname + '/public')); 		// set the static files location /client/img will be /img for users
+						// log every request to the console
+app.use(bodyParser()); 							// pull information from html in POST
+app.use(methodOverride()); 						// simulate DELETE and PUT
 
 // development only ============================
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+if (env === 'development') {
+  app.use(morgan('development')); 
 }
 
-// load routes ============================
-require('./app/routes/transporter')(app);
-require('./app/routes/delivery')(app);
-require('./app/routes/routes')(app);	// keep this last
+// ROUTES ============================
+var router = express.Router();
+router.use(function(req, res, next){
+	// do this for every rout
+	console.log('New route request');
+	next();
+})
+require('./server/routes/transporter-api')(app);
+require('./server/routes/delivery-api')(app);
+require('./server/routes/routes')(app);	// keep this last
 
 // start server ============================
 app.listen(port);
