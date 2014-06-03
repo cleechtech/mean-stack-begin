@@ -1,6 +1,6 @@
-// Transporter controller
+// Transporter API controller
 var mongoose = require('mongoose'),
-	Transporter = mongoose.model('Transporter');
+	Transporter = require('../models/transporter');
 
 module.exports = {
 	// show all transporters

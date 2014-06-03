@@ -1,6 +1,4 @@
-// Transporter routes
-var Transporter = require('../models/transporter');
-var Delivery = require('../models/delivery');
+// Transporter API routes
 var transportersCtrl = require('../controllers/transporters');
 
 module.exports = function(app){

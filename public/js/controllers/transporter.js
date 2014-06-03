@@ -1,5 +1,7 @@
-angular.module('transporterController', [])
-    .controller('transporterController', function($scope, $http, $routeParams){
+'use strict'
+
+// transporter service should handle most of this
+app.controller('TransporterCtrl', ["$scope", "$http", "$routeParams", "Transporter", function($scope, $http, $routeParams, Transporter){
 		
 		$scope.params = $routeParams;
 		
@@ -49,4 +51,4 @@ angular.module('transporterController', [])
 			// TODO
 		};
         
-    });
+}]);

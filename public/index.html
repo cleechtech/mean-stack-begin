@@ -1,17 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app='mean-stack-begin'>  <!-- TODO: bootstrap angular app instead -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <title>DairyDesk aka Cowsnhills v2.0</title>
-  <!-- CSS -->
+
   <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
   <link rel='stylesheet' href='libs/font-awesome/css/font-awesome.min.css'>
   <link rel='stylesheet' href='libs/animate.css/animate.min.css'>
   <link rel='stylesheet' href='css/style.css'>
-  <!-- /CSS -->
-  
 </head>
 <body>
 	
@@ -28,12 +26,8 @@
 	<!-- /HEADER -->
 	
 	<div class="container">
-		
 		<div ng-view></div>
-
 	</div>
-	
-	
 	
   <!-- JS libs -->
   <script src="libs/jquery/jquery.min.js"></script>
@@ -46,14 +40,13 @@
   <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- /JS libs -->
   
-  <script src="js/services/transporterService.js"></script>
-  <script src='js/services/deliveryService.js'></script>
-  <script src="js/controllers/mainController.js"></script>
-  <script src="js/controllers/transporterController.js"></script>
-  <script src='js/controllers/deliveryController.js'></script>
   <script src="js/app.js"></script>
-  <script src='js/config.js'></script>
-  <script src='js/init.js'></script>
+  <script src="js/services/transporter.js"></script>
+  <script src='js/services/delivery.js'></script>
 
+  <script src="js/controllers/main.js"></script>
+  <script src="js/controllers/transporter.js"></script>
+  <script src='js/controllers/delivery.js'></script>
+  
 </body>
 </html>

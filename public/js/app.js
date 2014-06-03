@@ -1,17 +1,30 @@
 'use strict';
 
-// Declare app level module
-window.app = angular.module('mean-stack-begin', [
+// TODO bootstrap application on page load
+
+var app = angular.module('mean-stack-begin', [
 	'ngRoute',
 	'ngResource',
-	'ngCookies',
-	'mainController',
-	'transporterController', 
-	'transporterService', 
-	'deliveryService', 
-	'deliveryController'
+	'ngCookies'
 ]);
 
-// TODO: bundle dependencies
-//~ window.angular.module('dairyDesk.controllers', []);
-//~ window.angular.module('dairyDesk.services', []);
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+	$routeProvider
+		.when('/transporters', {
+			templateUrl: 'views/transporters/index.html',
+			controller: 'TransporterCtrl'
+		})
+		.when('/deliveries', {
+			templateUrl: 'views/deliveries/index.html',
+			controller: 'DeliveryCtrl'
+		})
+		.when('/', {
+			templateUrl: 'views/partials/main.html',
+			controller: 'MainCtrl'
+		})
+		.otherwise({
+			redirectTo: '/'
+		});
+		
+	$locationProvider.html5Mode(true);
+}]);
