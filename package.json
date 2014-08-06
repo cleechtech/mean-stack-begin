@@ -1,5 +1,5 @@
 {
-  "name": "mean-stack-begin",
+  "name": "coderhunt",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,8 +9,15 @@
     "body-parser": "~1.0.1",
     "express": "~4.0.0",
     "jade": "~1.1.5",
+    "lodash": "^2.4.1",
     "method-override": "^1.0.0",
     "mongoose": "~3.8.3",
     "nodemon": "^1.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-connect": "^2.0.6",
+    "gulp-inject": "^1.0.1",
+    "main-bower-files": "^1.0.2"
   }
 }
