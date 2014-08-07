@@ -1,0 +1,13 @@
+<h2>Sign up</h2>
+
+<form ng-submit='addUser(user)'>
+	<input type='text' class='form-control' ng-model='user.fname' placeholder='First name'>
+	<input type='text' class='form-control' ng-model='user.lname' placeholder='Last name'>
+	<input type='text' class='form-control' ng-model='user.username' placeholder='Username'>
+	<input type='email' class='form-control' ng-model='user.email' placeholder='Email'>
+
+	<input type='password' class='form-control' ng-model='user.password' placeholder='Password'>
+	<input type='password' class='form-control' ng-model='user.cfpassword' placeholder='Confirm Password'>
+
+	<input type='submit' value='Sign up' class='btn btn-success'>
+</form>

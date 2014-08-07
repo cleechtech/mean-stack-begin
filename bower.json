@@ -3,19 +3,15 @@
   "version": "0.0.1",
   "dependencies": {
     "angular": "latest",
-    "angular-resource": "latest",
     "angular-cookies": "latest",
-    "angular-mocks": "latest",
-    "angular-route": "latest",
     "bootstrap": "3.0.3",
     "font-awesome": "latest",
-    "animate.css": "latest",
     "angular-bootstrap": "0.10.0",
     "angular-ui-utils": "0.1.0",
     "angular-ui-router": "~0.2.10",
-    "angular-touch": "~1.2.12",
-    "angular-gestures": "~0.2.1",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "restangular": "~1.4.0",
+    "angularLocalStorage": "~0.1.7"
   },
   "ignore": [
     "**/.*",

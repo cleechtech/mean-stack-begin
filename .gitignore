@@ -17,7 +17,7 @@ results
 node_modules
 npm-debug.log
 
-public/libs
+public/bower_components
 
 ########################       
 # misc / editors

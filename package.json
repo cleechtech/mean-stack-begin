@@ -12,6 +12,7 @@
     "lodash": "^2.4.1",
     "method-override": "^1.0.0",
     "mongoose": "~3.8.3",
+    "mongoose-unique-validator": "^0.3.0",
     "nodemon": "^1.1.1"
   },
   "devDependencies": {

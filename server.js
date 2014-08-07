@@ -10,9 +10,7 @@ require('./server/config/express')(app, envConfig)
 require('./server/config/mongoose')(envConfig)
 
 // ROUTES
-require('./server/routes/transporter-api')(app)
-require('./server/routes/delivery-api')(app)
-require('./server/routes/routes')(app)
+require('./server/config/routes')(app)
 
 // start server
 app.listen(envConfig.port, function(){

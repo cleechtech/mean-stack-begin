@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app='coderhunt'>
 <head>
+  <base href="/" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
@@ -8,34 +9,36 @@
 
   <!-- bower:css -->
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="/bower_components/animate.css/animate.css">
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
   <!-- endinject -->
 
-  <link rel='stylesheet' href='styles/style.css'>
 </head>
 <body>
 	<div class="container">
-    <div ng-include="'views/nav.html'"></div>
-		<div ng-view></div>
+    <div ng-include="'partials/nav.html'"></div>
+		<div ui-view></div>
 	</div>
 	
 
   <!-- bower:js -->
   <script src="/bower_components/angular/angular.js"></script>
-  <script src="/bower_components/angular-resource/angular-resource.js"></script>
   <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
-  <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
-  <script src="/bower_components/angular-route/angular-route.js"></script>
   <script src="/bower_components/jquery/dist/jquery.js"></script>
   <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="/bower_components/angular-touch/angular-touch.js"></script>
-  <script src="/bower_components/angular-gestures/gestures.js"></script>
+  <script src="/bower_components/lodash/dist/lodash.compat.js"></script>
+  <script src="/bower_components/angularLocalStorage/src/angularLocalStorage.js"></script>
   <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/bower_components/restangular/dist/restangular.js"></script>
   <!-- endinject -->
   
-  <script src="scripts/app.js"></script>
+  <script src="app.js"></script>
+  
+  <script src="user/userService.js"></script>
+  <script src="user/loginCtrl.js"></script>
+  <script src="user/signupCtrl.js"></script>
+
+  <script src='home/homeCtrl.js'></script>
   
 </body>
 </html>
