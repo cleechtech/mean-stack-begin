@@ -10,7 +10,7 @@ gulp.task('bower-install', function(){
   		inject(
   			gulp.src(bowerFiles(), {read: false}), 
   			{ name: 'bower', ignorePath: 'public' }
-		)
+		  )
   	)
   	.pipe(gulp.dest('./public/'))
 })

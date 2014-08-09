@@ -14,17 +14,17 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 	$stateProvider
 		.state('home', {
 			url: '/',
-			templateUrl: 'home/home.html',
+			templateUrl: 'app/home/home.html',
 			controller: 'HomeCtrl'
 		})
 		.state('login', {
 			url: '/login',
-			templateUrl: 'user/login.html',
+			templateUrl: 'app/user/login.html',
 			controller: 'LoginCtrl'
 		})
 		.state('signup', {
 			url: '/signup',
-			templateUrl: 'user/signup.html',
+			templateUrl: 'app/user/signup.html',
 			controller: 'SignupCtrl'
 		})
 

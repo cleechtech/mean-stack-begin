@@ -1,7 +1,8 @@
 var express = require('express'),
 	app = express(),
 	env = process.env.NODE_ENV || 'development',
-	envConfig = require('./server/config/environments')[env]
+	envConfig = require('./server/config/environments')[env],
+	passport = require('passport')
 
 // EXPRESS
 require('./server/config/express')(app, envConfig)
@@ -10,7 +11,7 @@ require('./server/config/express')(app, envConfig)
 require('./server/config/mongoose')(envConfig)
 
 // ROUTES
-require('./server/config/routes')(app)
+require('./server/config/routes')(app, passport)
 
 // start server
 app.listen(envConfig.port, function(){
