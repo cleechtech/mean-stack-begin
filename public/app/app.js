@@ -3,7 +3,8 @@
 var app = angular.module('coderhunt', [
 	'ngCookies',
 	'ui.router',
-	'restangular',
+	'ngResource',
+	'restangular',	// switch to this.
 	'angularLocalStorage'
 ])
 
@@ -45,4 +46,13 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 		})
 
 	$urlRouterProvider.otherwise('/')
+});
+
+// listen for routing errors
+app.run(function($rootScope, $location){
+	$rootScope.$on("$routeChangeError", function(e, current, previous, rejectionReason){
+		if (rejectionReason === 'not authorized'){
+			$location.path('/')
+		}
+	})
 })

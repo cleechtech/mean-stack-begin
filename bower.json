@@ -11,7 +11,8 @@
     "angular-ui-router": "~0.2.10",
     "jquery": "~2.1.1",
     "restangular": "~1.4.0",
-    "angularLocalStorage": "~0.1.7"
+    "angularLocalStorage": "~0.1.7",
+    "angular-resource": "~1.2.21"
   },
   "ignore": [
     "**/.*",
