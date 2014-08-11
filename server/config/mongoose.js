@@ -5,5 +5,7 @@ module.exports = function(envConfig){
 
   // load models ..
 
-  mongoose.connect(envConfig.db)
+  mongoose.connect(envConfig.db);
+
+	User.createDefaults();
 }

@@ -3,7 +3,7 @@ var express = require('express'),
 	methodOverride = require('method-override'),
 	cookieParser = require('cookie-parser'),
 	session = require('express-session'),
-	passport = require('passport')
+	passport = require('passport');
 
 module.exports = function(app, envConfig){
 	app.use(cookieParser())
@@ -16,4 +16,4 @@ module.exports = function(app, envConfig){
 
 	// static routing to public directory
 	app.use(express.static(envConfig.root + '/public'))
-}
+};
