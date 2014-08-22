@@ -1,28 +1,43 @@
 'use strict';
 
-app.controller('LoginCtrl', ['$scope', '$http', '$location', 'Auth', 'Identity', function($scope, $http, $location, notifier, Auth, Identity){
-	$scope.identity = Identity
-	$scope.signIn = function(username, password){
-		Auth.authenticateUser(username, password).then(function(success){
-			if(success){
-				// show success notification
-				// notifier.notify('You logged in successfully!')
-				console.log('Great success!')
-			} else {
-				// notifier.error('Error logging in!')
-				console.error('Boooooo :(')
-			}
-			$location.path('/')		// redirect
-		})
-	}
-
-	$scope.logout = function(){
-		Auth.logoutUser().then(function(){
-			// reset fields
-			$scope.username = ''
-			$scope.password = ''
-			// notifier.info('Log out successful!')
-			$location.path('/')		// redirect
-		})
-	}
-}])
+app.controller('LoginCtrl', function($scope, $alert, $auth) {
+    $scope.login = function() {
+      $auth.login({ email: $scope.email, password: $scope.password })
+        .then(function() {
+          $alert({
+            content: 'You have successfully logged in',
+            animation: 'fadeZoomFadeDown',
+            type: 'material',
+            duration: 3
+          });
+        })
+        .catch(function(response) {
+          $alert({
+            content: response.data.message,
+            animation: 'fadeZoomFadeDown',
+            type: 'material',
+            duration: 3
+          });
+        });
+    };
+    $scope.authenticate = function(provider) {
+      $auth.authenticate(provider)
+        .then(function() {
+          $alert({
+            content: 'You have successfully logged in',
+            animation: 'fadeZoomFadeDown',
+            type: 'material',
+            duration: 3
+          });
+        })
+        .catch(function(response) {
+        	console.log(response)
+          $alert({
+            content: response.data,
+            animation: 'fadeZoomFadeDown',
+            type: 'material',
+            duration: 3
+          });
+        });
+    };
+  });

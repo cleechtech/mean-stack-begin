@@ -1,11 +1,8 @@
-var mongoose = require('mongoose'),
-	User = require('../models/User')
+var mongoose = require('mongoose');
+
+// register models
+require('../models/User');
 
 module.exports = function(envConfig){
-
-  // load models ..
-
   mongoose.connect(envConfig.db);
-
-	User.createDefaults();
-}
+};

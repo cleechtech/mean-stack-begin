@@ -1,32 +1,17 @@
 'use strict';
 
 var app = angular.module('coderhunt', [
-	'ngCookies',
 	'ui.router',
+	'Satellizer',
+	'mgcrea.ngStrap',
 	'ngResource',
+	'ngMessages',
 	'restangular',	// switch to this.
 	'angularLocalStorage'
 ])
 
 // routes
-app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
-	$locationProvider.html5Mode(true);
-
-	// used for 'resolve' functions
-	var checkRole = {
-		admin: {
-			// inject Auth service
-			auth: function(Auth){
-				// return true or an unresolved promise (which will trigger routeChangeError)
-				return Auth.routeAccessFor('admin')
-			}
-		},
-		user: {
-			auth: function(Auth){
-				return Auth.authorizeUserForRoute()
-			}
-		}
-	};
+app.config(function($authProvider, $locationProvider, $stateProvider, $urlRouterProvider){
 
 	$stateProvider
 		.state('home', {
@@ -46,13 +31,8 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 		})
 
 	$urlRouterProvider.otherwise('/')
-});
 
-// listen for routing errors
-app.run(function($rootScope, $location){
-	$rootScope.$on("$routeChangeError", function(e, current, previous, rejectionReason){
-		if (rejectionReason === 'not authorized'){
-			$location.path('/')
-		}
-	})
-})
+	$authProvider.facebook({
+		clientId: '636702029715779'
+	});
+});

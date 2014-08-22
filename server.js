@@ -9,9 +9,6 @@ require('./server/config/express')(app, envConfig);
 // DATABASE
 require('./server/config/mongoose')(envConfig);
 
-// AUTHENTICATION
-require('./server/config/passport');
-
 // ROUTES
 require('./server/config/routes')(app);
 

@@ -3,6 +3,7 @@ var path = require('path'),
 
 module.exports = {
   development: {
+    env: 'development',
     root: rootPath,
     db: 'mongodb://localhost/mean_begin',
     port: process.env.PORT || 3000
@@ -12,6 +13,7 @@ module.exports = {
     db: 'mongodb://localhost/mean_begin_test'
   },
   production: {
+    env: 'production',
     root: rootPath,
     db: process.env.MONGOHQ_URL,
     port: process.env.PORT || 80
